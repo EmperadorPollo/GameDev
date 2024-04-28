@@ -57,10 +57,8 @@ public class BuildingManager : MonoBehaviour
     public void PlaceObject()
     {
 
-    // Ajusta la posición del objeto para que se coloque con la base en el suelo
-    float objectHeight = pendingObject.GetComponent<Collider>().bounds.size.y;
-    pendingObject.transform.position = new UnityEngine.Vector3(pendingObject.transform.position.x, 
-    pendingObject.transform.position.y + objectHeight / 2, pendingObject.transform.position.z);
+
+
         
         pendingObject.GetComponent<MeshRenderer>().material = materials [2];
         pendingObject = null;

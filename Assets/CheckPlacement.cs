@@ -14,14 +14,14 @@ public class CheckPlacement : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other){
-        if(other.gameObject.CompareTag("Object")){
+        if(other.gameObject.CompareTag("Object")&& !other.gameObject.name.Equals("TerrainDecoration")){
             buildingManager.canPlace = false;
            
         }
     }
 
     private void OnTriggerExit(Collider other){
-        if(other.gameObject.CompareTag("Object")){
+        if(other.gameObject.CompareTag("Object")&& !other.gameObject.name.Equals("TerrainDecoration")){
             buildingManager.canPlace = true;
         }
     }
