@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class BuildingManager : MonoBehaviour
 {
     public TMPro.TextMeshProUGUI feedbackText;
+    public TMPro.TextMeshProUGUI startMessageText;
     public GameObject[] objects;
 
     public GameObject pendingObject;
@@ -25,6 +26,19 @@ public class BuildingManager : MonoBehaviour
     bool gridOn = true;
     public bool canPlace = true;
     [SerializeField] private Toggle gridToggle;
+
+    void Start()
+    {
+    startMessageText.text = "Buy the antena tower so we can contact the outsiders";
+    StartCoroutine(ClearStartMessageAfterDelay(3f)); // Limpia el mensaje después de 3 segundos
+    }
+
+    IEnumerator ClearStartMessageAfterDelay(float delay)
+    {
+    yield return new WaitForSeconds(delay);
+    startMessageText.text = "";
+    }
+
 
     IEnumerator ClearFeedbackTextAfterDelay(float delay)
 {
