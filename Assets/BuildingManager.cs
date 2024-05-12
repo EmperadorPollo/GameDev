@@ -11,6 +11,8 @@ public class BuildingManager : MonoBehaviour
     public bool isFirstBuildingPlaced = false; // Variable para rastrear si el primer edificio ha sido 
     public TMPro.TextMeshProUGUI buildingMessageText; // El texto que mostrará el mensaje del edificio
 
+    public TMPro.TextMeshProUGUI placementMessageText;
+
     public TMPro.TextMeshProUGUI feedbackText;
     public TMPro.TextMeshProUGUI startMessageText;
     public GameObject[] objects;
@@ -55,6 +57,12 @@ public class BuildingManager : MonoBehaviour
     buildingMessageText.text = "";
 }
 
+    IEnumerator ClearPlacementMessageAfterDelay(float delay)
+{
+    yield return new WaitForSeconds(delay);
+    placementMessageText.text = "";
+}
+
 
 
     void Update()
@@ -72,16 +80,34 @@ public class BuildingManager : MonoBehaviour
             else {pendingObject.transform.position = pos;}
             
 
-            if (Input.GetMouseButtonDown(0)&& canPlace)
+            if (Input.GetMouseButtonDown(0))
+        {
+            if (canPlace)
             {
                 PlaceObject();
             }
+            else
+            {
+                placementMessageText.text = "Not enough space";
+                StartCoroutine(ClearPlacementMessageAfterDelay(2f)); // Limpia el mensaje después de 2 segundos
+            }
+        }
             if(Input.GetKeyDown(KeyCode.R))
             {
                 RotateObject();
             }
+            if (Input.GetMouseButtonDown(1))
+            {
+            CancelPlacement();
+            }
             UpdateMaterials();
         }
+    }
+
+    public void CancelPlacement()
+    {
+    Destroy(pendingObject);
+    pendingObject = null;
     }
 
     public void PlaceObject()

@@ -831,8 +831,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 9.269932, y: 8.096962, z: 13.444488}
+  m_Center: {x: -0.17597389, y: 3.548481, z: 0.09730959}
 --- !u!114 &-5806157420114311362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -847,6 +847,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyPerSecond: 10
   buildingCost: 50
+  buildingType: 
 --- !u!114 &1680323806172747100
 MonoBehaviour:
   m_ObjectHideFlags: 0

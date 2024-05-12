@@ -873,7 +873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eaed7053c164a9409536cce067aa93b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyPerSecond: 10000
+  moneyPerSecond: 2500
   buildingCost: 10000
   buildingType: AntenaTower
 --- !u!114 &6151297617601844251

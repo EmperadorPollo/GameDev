@@ -26,7 +26,8 @@ public class ContinueMusic : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(this.gameObject);
-    
+
+        audioSource = GetComponent<AudioSource>();
  
     }
 
@@ -57,16 +58,18 @@ public class ContinueMusic : MonoBehaviour
         {
             if (audioSource.isPlaying)
             {
-                StopMusic();
+                Debug.Log("La música se está reproduciendo, se va a pausar.");
+                audioSource.Stop(); // Pausa la música;
             }
             else
-            {
-                // Solo reproduce la música si la escena actual es "MainMenu"
-                if (SceneManager.GetActiveScene().name == "MainMenu")
-                {
-                    PlayMusic();
-                }
+            {                
+                audioSource.Play();
+                
             }
+        }
+            else
+        {
+        Debug.Log("audioSource es null.");
         }
     }
 }
