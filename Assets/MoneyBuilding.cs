@@ -5,15 +5,16 @@ using UnityEngine;
 public class MoneyBuilding : MonoBehaviour
 {
     public float moneyPerSecond; // La cantidad de dinero que el edificio produce por segundo
+    public float buildingCost;
     private float timer = 0f; // Un temporizador para rastrear cuánto tiempo ha pasado
 
     void Update()
     {
         timer += Time.deltaTime; // Incrementa el temporizador por la cantidad de tiempo que ha pasado desde el último frame
 
-        if (timer >= 1f) // Si ha pasado un segundo
+        if (timer >= 5f) // Si ha pasado un segundo
         {
-            timer -= 1f; // Restablece el temporizador
+            timer -= 5f; // Restablece el temporizador
             AddMoney(moneyPerSecond); // Añade dinero
         }
     }

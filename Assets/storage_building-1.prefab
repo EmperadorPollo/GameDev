@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyPerSecond: 100
+  buildingCost: 500
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class BuildingManager : MonoBehaviour
 {
+    public TMPro.TextMeshProUGUI feedbackText;
     public GameObject[] objects;
 
     public GameObject pendingObject;
@@ -24,6 +25,12 @@ public class BuildingManager : MonoBehaviour
     bool gridOn = true;
     public bool canPlace = true;
     [SerializeField] private Toggle gridToggle;
+
+    IEnumerator ClearFeedbackTextAfterDelay(float delay)
+{
+    yield return new WaitForSeconds(delay);
+    feedbackText.text = "";
+}
 
 
 
@@ -56,12 +63,20 @@ public class BuildingManager : MonoBehaviour
 
     public void PlaceObject()
     {
-
-
-
         
+         MoneyBuilding moneyBuilding = pendingObject.GetComponent<MoneyBuilding>();
+        if (EconomyManager.Instance.GetTotalMoney() >= moneyBuilding.buildingCost)
+    {
+        EconomyManager.Instance.AddMoney(-moneyBuilding.buildingCost);
         pendingObject.GetComponent<MeshRenderer>().material = materials [2];
         pendingObject = null;
+    }
+    else
+    {
+        feedbackText.text = "You dont have enough money";
+        StartCoroutine(ClearFeedbackTextAfterDelay(1f));
+    }
+    
     }
 
     public void RotateObject()
