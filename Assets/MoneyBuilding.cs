@@ -7,6 +7,7 @@ public class MoneyBuilding : MonoBehaviour
     public float moneyPerSecond; // La cantidad de dinero que el edificio produce por segundo
     public float buildingCost;
     private float timer = 0f; // Un temporizador para rastrear cuánto tiempo ha pasado
+    public string buildingType; // El tipo de edificio
 
     void Update()
     {

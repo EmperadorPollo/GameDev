@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 public class BuildingManager : MonoBehaviour
 {
+    public bool isFirstBuildingPlaced = false; // Variable para rastrear si el primer edificio ha sido 
+    public TMPro.TextMeshProUGUI buildingMessageText; // El texto que mostrará el mensaje del edificio
+
     public TMPro.TextMeshProUGUI feedbackText;
     public TMPro.TextMeshProUGUI startMessageText;
     public GameObject[] objects;
@@ -44,6 +47,12 @@ public class BuildingManager : MonoBehaviour
 {
     yield return new WaitForSeconds(delay);
     feedbackText.text = "";
+}
+
+    IEnumerator ClearBuildingMessageAfterDelay(float delay)
+{
+    yield return new WaitForSeconds(delay);
+    buildingMessageText.text = "";
 }
 
 
@@ -84,6 +93,14 @@ public class BuildingManager : MonoBehaviour
         EconomyManager.Instance.AddMoney(-moneyBuilding.buildingCost);
         pendingObject.GetComponent<MeshRenderer>().material = materials [2];
         pendingObject = null;
+
+        // Verifica si es la primera vez que se coloca el edificio
+        if (!isFirstBuildingPlaced && moneyBuilding.buildingType == "AntenaTower")
+        {
+            isFirstBuildingPlaced = true;
+            buildingMessageText.text = "Now we will be able to communicate with the outsiders!Thanks for playing this demo!";
+            StartCoroutine(ClearBuildingMessageAfterDelay(6f)); // Limpia el mensaje después de 3 segundos
+        }
     }
     else
     {

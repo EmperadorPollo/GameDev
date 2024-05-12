@@ -747,7 +747,7 @@ GameObject:
   - component: {fileID: -136737169349699709}
   - component: {fileID: 6151297617601844251}
   m_Layer: 0
-  m_Name: FormerGwangjuMBCBuilding 1
+  m_Name: AntenaTower
   m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -873,8 +873,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eaed7053c164a9409536cce067aa93b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyPerSecond: 1000
+  moneyPerSecond: 10000
   buildingCost: 10000
+  buildingType: AntenaTower
 --- !u!114 &6151297617601844251
 MonoBehaviour:
   m_ObjectHideFlags: 0
